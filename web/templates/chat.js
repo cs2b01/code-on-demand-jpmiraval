@@ -7,6 +7,7 @@ function Enviar(){
                 "user_from_id": user_from_id,
                 "user_to_id": user_to_id
             });
+            alert(message);
        $.ajax({
                  url:'/sendmessage',
                  type:'POST',
