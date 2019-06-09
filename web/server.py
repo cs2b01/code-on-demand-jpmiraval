@@ -127,12 +127,10 @@ def delete_message():
 def send_message():
     message = json.loads(request.data)
     content = message['content']
-    user_from_id = message['user_from_id']
     user_to_id = message['user_to_id']
     session = db.getSession(engine)
     mensaje = entities.Message(
         content=content,
-        user_from_id=user_from_id,
         user_to_id=user_to_id,
     )
     session.add(mensaje)

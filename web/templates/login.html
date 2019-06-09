@@ -3,33 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat Login</title>
+    <link rel="stylesheet" href="/static/css/login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="login.js"></script>
 </head>
 <body>
 
-    <table>
-        <tr>
-            <td>Username</td>
-            <td><input type="text" name="username" id="username"/></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><input type="password" name="password" id="password" /></td>
-        </tr>
-        <tr>
-            <td colspan="2" id="go-to-chat">
+    <div class="login-page">
+  <div class="form">
 
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="button" value="login" onclick="getData()"/>
-            </td>
-        </tr>
-
-    </table>
-    <div id="action">
-    </div>
+    <table class="login-form">
+      <input id = "username" type="text" placeholder="username"/>
+      <input id = "password" type="password" placeholder="password"/>
+        <button onclick="getData()">login</button> </table>
+      <div id = "action" ></div>
+  </div>
+</div>
 </body>
 </html>

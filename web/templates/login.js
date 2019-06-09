@@ -14,14 +14,13 @@ function getData(){
             data : message,
             dataType:'json',
             error: function(response){
-                alert(JSON.stringify(response));
                 $('#action').html('');
                 if(response['status']==401)
-                $('#action').append('<img src="/static/images/cross.png"/>');
+                $('#action').append('<img src="/static/images/cross.png" width="100" height="100"/>');
             if(response['status']==200){
-            $('#action').append('<img src="/static/images/check.png"/>');
-                $('#go-to-chat').append('<input  type="button" value="send a message" onclick="location.href=\'chat.html\'" />');
-                $('#go-to-chat').append('<input  type="button" value="read messages" onclick="location.href=\'crud_messages.html\'" />');
+            $('#action').append('<img width: 100px; height: 100px src="/static/images/check.png" width="100" height="100"/>');
+                $('#action').append('<input  type="button" value="send a message" onclick="location.href=\'chat.html\'" />');
+                $('#action').append('<input  type="button" value="read messages" onclick="location.href=\'crud_messages.html\'" />');
             }
 
 

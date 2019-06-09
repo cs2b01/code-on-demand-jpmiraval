@@ -1,8 +1,7 @@
 $(function(){
     var url = "http://127.0.0.1:8080/messages";
-    var url_usuarios = "http://127.0.0.1:8080/users";
-
-    $("#grid").dxDataGrid({
+    var url2 = "http://127.0.0.1:8080/users";
+    var data={
         dataSource: DevExpress.data.AspNet.createStore({
             key: "id",
             loadUrl: url ,
@@ -29,42 +28,38 @@ $(function(){
             showPageSizeSelector: true,
             allowedPageSizes: [8, 12, 20]
         },
+        filterRow: {
+            visible: true
+        },
+        headerFilter: {
+            visible: true
+        },
+
         columns: [{
             dataField: "id",
             dataType: "number",
             allowEditing: false
         }, {
-            dataField: "content",
+            dataField: "content"
         }, {
             dataField: "sent_on",
-            allowEditing: false,
+            allowEditing:false
         }, {
-            dataField: "user_from_name",
-            dataType: "number",
+            dataField: "user_from.username",
             lookup: {
                 dataSource: DevExpress.data.AspNet.createStore({
-                    key: "id",
-                    loadUrl: url_usuarios,
+                    key: "user_from",
+                    loadUrl:url2,
                     onBeforeSend: function(method, ajaxOptions) {
                         ajaxOptions.xhrFields = { withCredentials: true };
                     }
                 }),
-                displayExpr: "name"
+                displayExpr: "username"
             }
         }, {
-            dataField: "user_to_name",
-            dataType: "number",
-            lookup: {
-                dataSource: DevExpress.data.AspNet.createStore({
-                    key: "id",
-                    loadUrl: url_usuarios,
-                    onBeforeSend: function(method, ajaxOptions) {
-                        ajaxOptions.xhrFields = { withCredentials: true };
-                    }
-                }),
-                valueExpr: "id",
-                displayExpr: "name"
-            }
-        },  ],
-    }).dxDataGrid("instance");
+            dataField: "user_to.username",
+        },],
+    };
+    $("#grid").dxDataGrid(data);
+    console.log(data);
 });
