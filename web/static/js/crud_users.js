@@ -1,7 +1,8 @@
 $(function(){
-    var url = "http://127.0.0.1:8080/messages";
-    var url2 = "http://127.0.0.1:8080/users";
-    var data={
+    var url = "http://127.0.0.1:8080/users";
+
+
+    $("#grid").dxDataGrid({
         dataSource: DevExpress.data.AspNet.createStore({
             key: "id",
             loadUrl: url ,
@@ -28,38 +29,18 @@ $(function(){
             showPageSizeSelector: true,
             allowedPageSizes: [8, 12, 20]
         },
-        filterRow: {
-            visible: true
-        },
-        headerFilter: {
-            visible: true
-        },
-
         columns: [{
             dataField: "id",
             dataType: "number",
             allowEditing: false
         }, {
-            dataField: "content"
+            dataField: "username"
         }, {
-            dataField: "sent_on",
-            allowEditing:false
+            dataField: "name"
         }, {
-            dataField: "user_from.username",
-            lookup: {
-                dataSource: DevExpress.data.AspNet.createStore({
-                    key: "user_from",
-                    loadUrl:url2,
-                    onBeforeSend: function(method, ajaxOptions) {
-                        ajaxOptions.xhrFields = { withCredentials: true };
-                    }
-                }),
-                displayExpr: "username"
-            }
+            dataField: "fullname"
         }, {
-            dataField: "user_to.username",
-        },],
-    };
-    $("#grid").dxDataGrid(data);
-    console.log(data);
+            dataField: "password"
+        }, ],
+    }).dxDataGrid("instance");
 });
