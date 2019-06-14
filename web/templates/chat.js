@@ -1,5 +1,6 @@
 var currentUserId = 0;
 
+
 function whoami(){
         $.ajax({
             url:'/current',
@@ -7,7 +8,6 @@ function whoami(){
             contentType: 'application/json',
             dataType:'json',
             success: function(response){
-                //alert(JSON.stringify(response));
                 $('#cu_username').html(response['username'])
                 var name = response['name']+" "+response['fullname'];
                 currentUserId = response['id'];
@@ -46,12 +46,13 @@ function whoami(){
     function loadMessages(user_from_id, user_to_id){
             //alert(user_from_id);
             //alert(user_to_id);
+            blank();
             $.ajax({
-                blank();
                 url:'/messages/'+user_from_id+"/"+user_to_id,
                 type:'GET',
                 contentType: 'application/json',
                 dataType:'json',
+
                 success: function(response){
                   var i = 0;
                   $.each(response, function(){
